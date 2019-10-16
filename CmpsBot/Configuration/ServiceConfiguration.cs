@@ -22,6 +22,7 @@ namespace CmpsBot.Configuration
                     DefaultRunMode = RunMode.Async,     // Force all commands to run async by default
                 }))
                 .AddSingleton<CommandHandler>()         // Add the command handler to the collection
+                .AddSingleton<EventHandler>()           // Add the event handler to the collection
                 .AddSingleton<Random>()                 // Add random to the collection
                 .AddSingleton((IConfigurationRoot) configuration);           // Add the configuration to the collection
         }
