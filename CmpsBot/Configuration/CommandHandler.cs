@@ -33,7 +33,7 @@ namespace CmpsBot.Configuration
             var msg = s as SocketUserMessage;     // Ensure the message is from a user/bot
             if (msg == null){ return;}
             if (msg.Author.Id == discord.CurrentUser.Id) return;     // Ignore self when checking commands
-            
+            if (msg.Author.IsBot) { return; }   // Ignore other possible bots in server
             var context = new SocketCommandContext(discord, msg);     // Create the command context
 
             int argPos = 0;     // Check if the message has a valid command prefix
