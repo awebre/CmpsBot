@@ -6,6 +6,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using EventHandler = CmpsBot.Configuration.EventHandler;
 
 namespace CmpsBot
 {
@@ -34,6 +35,8 @@ namespace CmpsBot
 
             var provider = services.BuildServiceProvider();           // Build the service provider
             provider.GetRequiredService<CommandHandler>(); 		      // Start the command handler service
+            provider.GetRequiredService<EventHandler>();              // Start the event handler service
+
 
             await DiscordConfiguration.ConfigureAndRun(provider, Configuration); //Configures and starts the discord socket client
 
