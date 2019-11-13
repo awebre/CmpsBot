@@ -4,6 +4,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CmpsBot.Services;
 
 namespace CmpsBot.Configuration
 {
@@ -24,7 +25,8 @@ namespace CmpsBot.Configuration
                 .AddSingleton<CommandHandler>()         // Add the command handler to the collection
                 .AddSingleton<EventHandler>()           // Add the event handler to the collection
                 .AddSingleton<Random>()                 // Add random to the collection
-                .AddSingleton((IConfigurationRoot) configuration);           // Add the configuration to the collection
+                .AddSingleton((IConfigurationRoot) configuration)
+                .AddSingleton<FileSystemService>();           // Add the configuration to the collection
         }
     }
 }
