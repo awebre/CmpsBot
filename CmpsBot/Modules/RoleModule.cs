@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -16,34 +17,13 @@ namespace CmpsBot.Modules
         {
             this.config = config;
         }
-        
-        //INSERT ROLE ID HERE:
-        ulong ITrole;
-        ulong CSrole;
-        ulong MathMinorRole;
 
-        [Command("ITRole")]
+        [Command("IT")]
         public async Task ITRoleTask()
         {
-            var role = Context.Guild.GetRole(ITrole);
+            var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == Roles.IT);
             await ((SocketGuildUser)Context.User).AddRoleAsync(role);
             await ReplyAsync("Role set as IT.");
-        }
-
-        [Command("Computer Science")]
-        public async Task CSRoleTask()
-        {
-            var role = Context.Guild.GetRole(CSrole);
-            await ((SocketGuildUser)Context.User).AddRoleAsync(role);
-            await ReplyAsync("Role set as CS.");
-        }
-
-        [Command("Math Minor")]
-        public async Task MathMinorTask()
-        {
-            var role = Context.Guild.GetRole(MathMinorRole);
-            await ((SocketGuildUser)Context.User).AddRoleAsync(role);
-            await ReplyAsync("Role set as Math Minor.");
         }
     }
 }
